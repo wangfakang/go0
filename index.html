@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Go0 by wangfakang</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Go0</h1>
+        <p class="header">go simple study</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/wangfakang/go0/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/wangfakang/go0/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/wangfakang/go0">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/wangfakang">wangfakang</a></p>
+
+
+      </header>
+      <section>
+        <p><code>go学习：</code></p>
+
+<p>golang 的目标就是具有c的执行效率，具有python的开发效率．     </p>
+
+<h1>
+<a id="首先就是go环境的搭建-" class="anchor" href="#%E9%A6%96%E5%85%88%E5%B0%B1%E6%98%AFgo%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA-" aria-hidden="true"><span class="octicon octicon-link"></span></a>首先就是go环境的搭建： </h1>
+
+<ul>
+<li><p>linux上：<br>
+　　可以使用yum或apt进行安装．<br>
+　　也可以使用golang源码进行安装．   </p></li>
+<li>
+<p>windows上:   </p>
+
+<ul>
+<li>1.下载go源码<br>
+</li>
+<li>2.下载相应的ide[liteide]还不错<br>
+</li>
+<li>3.相关环境变量的配置［GOPATH,GOROOT］<br>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>GOPATH:go的工作目录<br>
+GOROOT:go的安装目录　默认/usr/local/go   </p>
+
+<p>其实经常用到的就是GOPATH，比如用到了自己写的包，通常把其自己写的放在GOPATH/src/目录下．   </p>
+
+<p>////////////////////////////<br>
+export GOROOT=$HOME/go     </p>
+
+<p>export GOBIN=$GOROOT/bin   </p>
+
+<p>export PATH=$PATH:$GOBIN<br>
+////////////////////////////     </p>
+
+<h1>
+<a id="go-编辑器" class="anchor" href="#go-%E7%BC%96%E8%BE%91%E5%99%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>go 编辑器</h1>
+
+<ul>
+<li><a href="http://www.wolfe.id.au/2015/03/05/using-sublime-text-for-go-development/">Using Sublime Text for Go</a></li>
+<li>或是使用国人开发的liteide</li>
+</ul>
+
+<h1>
+<a id="go文档的观看--" class="anchor" href="#go%E6%96%87%E6%A1%A3%E7%9A%84%E8%A7%82%E7%9C%8B--" aria-hidden="true"><span class="octicon octicon-link"></span></a>go文档的观看：  </h1>
+
+<p>　　由于墙的存在，所以自己本地搭建go doc进行文档的查询： godoc -http=":9908"<br>
+端口可以自己设置，然后在浏览器访问127.0.0.1:9908就可以查看go文档了．<br>
+　　在这里给一个文档还不错<a href="http://ilovers.sinaapp.com/doc/golang-specification.html">godoc</a>   </p>
+
+<h1>
+<a id="go的常用的基本命令----" class="anchor" href="#go%E7%9A%84%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4----" aria-hidden="true"><span class="octicon octicon-link"></span></a>go的常用的基本命令：    </h1>
+
+<p>编译go文件　　　　　go build xxx.go　　产生二进制文件<br>
+编译go直接运行　　　go run xxx.go　　  直接执行   </p>
+
+<ul>
+<li>go fmt  对其go文件进行相应的格式化<br>
+</li>
+<li>go test 对其指定的目录下的以test结尾的文件(*_test.go)编译并执行<br>
+</li>
+<li>go get  下载然后编译然后安装<br>
+</li>
+<li>go install 编译生成可执行文件，然后进行安装［一般会在GOPATH/pkg或是GOPATH/bin目录下］<br>
+</li>
+</ul>
+
+<h1>
+<a id="go相关语法----" class="anchor" href="#go%E7%9B%B8%E5%85%B3%E8%AF%AD%E6%B3%95----" aria-hidden="true"><span class="octicon octicon-link"></span></a>go相关语法：    </h1>
+
+<p>　go相关的语法就不细说，只要写过ｃ就没有问题，go和ｃ还是很像的．<br>
+　最开始写go的时候，其实最大的接受不了的就是go的变量的定义格式如：<br>
+　var str string ---&gt;即变量名在类型的左边．    </p>
+
+<h1>
+<a id="go函数----" class="anchor" href="#go%E5%87%BD%E6%95%B0----" aria-hidden="true"><span class="octicon octicon-link"></span></a>go函数:    </h1>
+
+<p>和ｃ的差别是可以返回多个值． </p>
+
+<pre lang="golang"><code>  func add_sub(a, b int)(int, int){
+      return a+b, a-b
+  }
+</code></pre>
+
+<h1>
+<a id="go中的神器interface----" class="anchor" href="#go%E4%B8%AD%E7%9A%84%E7%A5%9E%E5%99%A8interface----" aria-hidden="true"><span class="octicon octicon-link"></span></a>go中的神器interface:    </h1>
+
+<p>go中的interface是很强大的，可以实现类似c++中虚函数的功能．   </p>
+
+<pre lang="golang"><code>package main
+import "fmt"
+
+type Human struct {
+    name string
+    age int
+    phone string
+}
+
+type Student struct {
+    Human //匿名字段
+    school string
+    loan float32
+}
+
+type Employee struct {
+    Human //匿名字段
+    company string
+    money float32
+}
+
+//Human实现SayHi方法
+func (h Human) SayHi() {
+    fmt.Printf("Hi, I am %s you can call me on %s\n", h.name, h.phone)
+}
+
+//Human实现Sing方法
+func (h Human) Sing(lyrics string) {
+    fmt.Println("La la la la...", lyrics)
+}
+
+//Employee重载Human的SayHi方法
+func (e Employee) SayHi() {
+    fmt.Printf("Hi, I am %s, I work at %s. Call me on %s\n", e.name,
+        e.company, e.phone)
+    }
+
+// Interface Men被Human,Student和Employee实现
+// 因为这三个类型都实现了这两个方法
+type Men interface {
+    SayHi()
+    Sing(lyrics string)
+}
+
+func main() {
+    mike := Student{Human{"Mike", 25, "222-222-XXX"}, "MIT", 0.00}
+    paul := Student{Human{"Paul", 26, "111-222-XXX"}, "Harvard", 100}
+    sam := Employee{Human{"Sam", 36, "444-222-XXX"}, "Golang Inc.", 1000}
+    Tom := Employee{Human{"Tom", 37, "222-444-XXX"}, "Things Ltd.", 5000}
+
+    //定义Men类型的变量i
+    var i Men //此时上面的两个类型由于实现了Men中的方法，所以i可以指向这两个．
+
+    //i能存储Student
+    i = mike
+    fmt.Println("This is Mike, a Student:")
+    i.SayHi()
+    i.Sing("November rain")
+
+    //i也能存储Employee
+    i = Tom
+    fmt.Println("This is Tom, an Employee:")
+    i.SayHi()
+    i.Sing("Born to be wild")
+
+    //定义了slice Men
+    fmt.Println("Let's use a slice of Men and see what happens")
+    x := make([]Men, 3)
+    //这三个都是不同类型的元素，但是他们实现了interface同一个接口
+    x[0], x[1], x[2] = paul, sam, mike
+
+    for _, value := range x{
+        value.SayHi()
+    }
+}
+</code></pre>
+
+<h1>
+<a id="go可以实现面向对象" class="anchor" href="#go%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>go可以实现面向对象：</h1>
+
+<p>go利用其结构体,这个和lua有些类似．</p>
+
+<p>　如下：</p>
+
+<pre lang="golang"><code>type Human struct {
+    name string
+    age int
+    phone string
+}
+
+
+//Human对象实现Sayhi方法
+func (h *Human) SayHi() {
+    fmt.Printf("Hi, I am %s you can call me on %s\n", h.name, h.phone)
+}
+</code></pre>
+
+<h1>
+<a id="欢迎一起交流学习-" class="anchor" href="#%E6%AC%A2%E8%BF%8E%E4%B8%80%E8%B5%B7%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0-" aria-hidden="true"><span class="octicon octicon-link"></span></a>欢迎一起交流学习 </h1>
+
+<p>在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流</p>
+
+<ul>
+<li>邮件(1031379296#qq.com, 把#换成@)</li>
+<li>QQ: 1031379296</li>
+<li>weibo: <a href="http://weibo.com/u/2786211992/home">@王发康</a>
+</li>
+</ul>
+
+<h1>
+<a id="thx" class="anchor" href="#thx" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thx</h1>
+
+<ul>
+<li>chunshengsterATgmail.com</li>
+</ul>
+
+<h1>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h1>
+
+<ul>
+<li>Linux\nginx\golang\c\c++爱好者</li>
+<li>欢迎一起交流  一起学习# </li>
+<li>Others say good and Others good</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("golang simple study");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
